@@ -89,3 +89,8 @@ class PrestoConnectionManager(SQLConnectionManager):
 
     def cancel(self, connection):
         pass
+
+    def _rollback_handle(self, connection):
+        """Presto doesn't support rollbacks, but it does throw an exception
+        when you call `connection.handle.rollback()`. Stub it out.
+        """
