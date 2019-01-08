@@ -35,7 +35,7 @@
 
     ),
 
-    columns as (
+    column_names as (
 
         select
             table_schema,
@@ -52,7 +52,7 @@
 
     select *
     from tables
-    join columns using (table_schema, table_name)
+    join column_names using (table_schema, table_name)
     join table_owners using (table_schema, table_name)
 
     where table_schema != 'information_schema'
