@@ -1,9 +1,5 @@
 {% macro postgres__get_relations () -%}
   {%- call statement('relations', fetch_result=True) -%}
-    -- {#
-    -- in pg_depend, objid is the dependent, refobjid is the referenced object
-    -- "a pg_depend entry indicates that the referenced object cannot be dropped without also dropping the dependent object."
-    -- #}
     with relation as (
         select
             pg_rewrite.ev_class as class,
